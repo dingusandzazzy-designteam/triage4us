@@ -1,0 +1,107 @@
+/* ============================================================
+   Triage4US — Design Tokens
+   Source: documents/02. visual direction/triage4us_visual_direction_claude.md
+   These tokens map 1:1 to Webflow Variables on migration.
+   ============================================================ */
+
+:root {
+  /* ---------- Color ---------- */
+  --color-white: #FFFFFF;
+  --color-background-soft: #F7F9FB;
+  --color-soft-blue: #E9F0FF;
+  --color-bright-green: #00C44C;
+  --color-deep-green: #016847;
+  --color-deep-teal: #022F42;
+  --color-muted-gray: #5B6B7A;
+  --color-near-black: #0B0D11;
+  --color-stable-green: #7BB662;
+
+  /* Semantic aliases */
+  --color-text-primary: var(--color-near-black);
+  --color-text-deep: var(--color-deep-teal);
+  --color-text-muted: var(--color-muted-gray);
+  --color-text-on-dark: var(--color-white);
+
+  --color-bg-page: var(--color-white);
+  --color-bg-soft: var(--color-background-soft);
+  --color-bg-accent-soft: var(--color-soft-blue);
+
+  --color-cta-primary: var(--color-deep-green);
+  --color-cta-primary-hover: #014f37;
+  --color-accent-bright: var(--color-bright-green);
+  --color-accent-stable: var(--color-stable-green);
+
+  --color-border-soft: #E6EBF0;
+
+  /* ---------- Radius ---------- */
+  --radius-button: 999px;
+  --radius-small: 12px;
+  --radius-medium: 20px;
+  --radius-card: 24px;
+  --radius-large: 32px;
+  --radius-section: 40px;
+
+  /* ---------- Typography ---------- */
+  --font-primary: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --fs-display: clamp(2.5rem, 5vw + 1rem, 4.5rem);   /* H1 hero */
+  --fs-h1: clamp(2.25rem, 4vw + 0.5rem, 3.5rem);
+  --fs-h2: clamp(1.75rem, 2.5vw + 0.5rem, 2.75rem);
+  --fs-h3: clamp(1.25rem, 1vw + 0.875rem, 1.5rem);
+  --fs-body-large: 1.125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-tiny: 0.75rem;
+  --fs-stat: clamp(2.75rem, 4vw + 1rem, 4rem);
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.65;
+
+  --ls-tight: -0.02em;
+  --ls-normal: 0;
+
+  /* ---------- Spacing (4-pt grid) ---------- */
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4 */
+  --space-2: 0.5rem;    /* 8 */
+  --space-3: 0.75rem;   /* 12 */
+  --space-4: 1rem;      /* 16 */
+  --space-5: 1.5rem;    /* 24 */
+  --space-6: 2rem;      /* 32 */
+  --space-7: 3rem;      /* 48 */
+  --space-8: 4rem;      /* 64 */
+  --space-9: 6rem;      /* 96 */
+  --space-10: 8rem;     /* 128 */
+
+  /* Section padding (vertical) */
+  --section-padding-small: var(--space-7);
+  --section-padding-medium: var(--space-8);
+  --section-padding-large: var(--space-9);
+  --section-padding-huge: var(--space-10);
+
+  /* ---------- Container widths ---------- */
+  --container-small: 48rem;     /* 768  */
+  --container-medium: 64rem;    /* 1024 */
+  --container-large: 80rem;     /* 1280 */
+  --container-full: 90rem;      /* 1440 */
+
+  /* ---------- Elevation ---------- */
+  --shadow-soft: 0 1px 2px rgba(11, 13, 17, 0.04), 0 4px 16px rgba(11, 13, 17, 0.04);
+  --shadow-card: 0 2px 4px rgba(11, 13, 17, 0.04), 0 12px 32px rgba(11, 13, 17, 0.06);
+  --shadow-lift: 0 4px 12px rgba(11, 13, 17, 0.08), 0 24px 48px rgba(11, 13, 17, 0.10);
+
+  /* ---------- Motion ---------- */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+
+  /* ---------- Layout helpers ---------- */
+  --page-padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}

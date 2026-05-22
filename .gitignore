@@ -1,0 +1,27 @@
+# Project-internal directories — never commit
+documents/
+workflow/
+plan/
+prompts/
+feedbacks/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Node / build artifacts (in case the project grows in that direction)
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Python bytecode (from skill scripts)
+__pycache__/
+*.pyc
