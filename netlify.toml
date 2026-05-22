@@ -10,6 +10,14 @@
 # in the Netlify site settings (the function will call ctx.next() on every
 # request).
 
-[[edge_functions]]
-  path = "/*"
-  function = "gate"
+# Edge function gate is DISABLED — team is on Netlify Free tier and
+# exhausted the monthly edge function invocation pool, which makes the
+# function throw `usage_exceeded` 503s on every non-cached path. Until
+# the quota resets (or the team upgrades to Pro), the pre-launch gate
+# runs client-side from inside index.html instead. The function source
+# at `netlify/edge-functions/gate.ts` is kept for easy re-enable —
+# uncomment the block below to reactivate once quota is healthy.
+#
+# [[edge_functions]]
+#   path = "/*"
+#   function = "gate"

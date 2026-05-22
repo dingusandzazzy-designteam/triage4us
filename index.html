@@ -7,6 +7,174 @@
   <title>Triage4US | Childcare &amp; Family Support for Nurses</title>
   <meta name="description" content="Triage4US helps single mom nurses access childcare, family support, tutoring, wellness resources, and stability for their families." />
 
+  <!-- Pre-launch: keep this private out of search results. Remove when site goes public. -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!--
+    Pre-launch client-side gate. Cheap "anti-curioso" protection — not real auth.
+    SHA-256 of the password is embedded; correct entry stores a flag in
+    sessionStorage and reveals the page. Remove this block + the noindex meta
+    above when launching publicly.
+  -->
+  <style>
+    html.is-locked > body > *:not(.gate-overlay) { display: none !important; }
+    html.is-locked { overflow: hidden; }
+    .gate-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background-color: #0a0a0a;
+      color: #f5f5f5;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .gate-overlay__card {
+      width: 100%;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      text-align: center;
+    }
+    .gate-overlay__eyebrow {
+      margin: 0;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+    .gate-overlay__wordmark {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+    }
+    .gate-overlay__hint {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .gate-overlay__form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .gate-overlay__input {
+      width: 100%;
+      padding: 12px 14px;
+      font: inherit;
+      font-size: 15px;
+      text-align: center;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 120ms ease, background-color 120ms ease;
+    }
+    .gate-overlay__input::placeholder { color: rgba(255, 255, 255, 0.35); }
+    .gate-overlay__input:focus {
+      border-color: rgba(255, 255, 255, 0.55);
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+    .gate-overlay__button {
+      width: 100%;
+      padding: 12px 14px;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      color: #0a0a0a;
+      background-color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 120ms ease, background-color 120ms ease;
+    }
+    .gate-overlay__button:hover { background-color: #e9e9e9; }
+    .gate-overlay__button:active { transform: translateY(1px); }
+    .gate-overlay__error {
+      margin: 0;
+      min-height: 1em;
+      font-size: 13px;
+      color: #ff6b6b;
+    }
+  </style>
+  <script>
+    (function () {
+      var KEY = "triage4us-gate";
+      var HASH = "39f72cb760163723d0fdc4827d13955ba819765ee17ded7e7443b9572ea2b743";
+      try {
+        if (sessionStorage.getItem(KEY) === "1") return;
+      } catch (e) { /* sessionStorage blocked — treat as locked */ }
+      document.documentElement.classList.add("is-locked");
+
+      async function sha256Hex(s) {
+        var buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+        return Array.from(new Uint8Array(buf)).map(function (b) {
+          return b.toString(16).padStart(2, "0");
+        }).join("");
+      }
+
+      function mount() {
+        var overlay = document.createElement("div");
+        overlay.className = "gate-overlay";
+        overlay.setAttribute("role", "dialog");
+        overlay.setAttribute("aria-modal", "true");
+        overlay.setAttribute("aria-labelledby", "gate-wordmark");
+        overlay.innerHTML =
+          '<div class="gate-overlay__card">' +
+            '<p class="gate-overlay__eyebrow">Secure Preview</p>' +
+            '<h1 id="gate-wordmark" class="gate-overlay__wordmark">Triage4US</h1>' +
+            '<p class="gate-overlay__hint">This preview is private. Enter the access password to continue.</p>' +
+            '<form class="gate-overlay__form" autocomplete="off">' +
+              '<input class="gate-overlay__input" type="password" name="password" placeholder="Password" autofocus required />' +
+              '<button class="gate-overlay__button" type="submit">Enter</button>' +
+              '<p class="gate-overlay__error" role="alert"></p>' +
+            '</form>' +
+          '</div>';
+        document.body.appendChild(overlay);
+
+        var form = overlay.querySelector("form");
+        var input = overlay.querySelector("input");
+        var error = overlay.querySelector(".gate-overlay__error");
+
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          error.textContent = "";
+          var value = (input.value || "").trim().toLowerCase();
+          if (!value) return;
+          var hex = await sha256Hex(value);
+          if (hex === HASH) {
+            try { sessionStorage.setItem(KEY, "1"); } catch (e) { /* ignore */ }
+            overlay.remove();
+            document.documentElement.classList.remove("is-locked");
+          } else {
+            error.textContent = "Incorrect password. Try again.";
+            input.value = "";
+            input.focus();
+          }
+        });
+
+        setTimeout(function () { input.focus(); }, 0);
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", mount);
+      } else {
+        mount();
+      }
+    })();
+  </script>
+
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Supporting Single Mom Nurses &amp; Their Families" />
   <meta property="og:description" content="Helping nurses access childcare, wellness resources, tutoring, and family support through Triage4US." />
