@@ -31,7 +31,7 @@
   <div class="page_wrap">
 
     <!-- ========== HEADER ========== -->
-    <header class="site-header" role="banner">
+    <header class="site-header is-over-hero" role="banner">
       <div class="padding-global">
         <div class="container-large">
           <div class="site-header_inner">
@@ -51,35 +51,30 @@
 
       <!-- ========== HERO ========== -->
       <section id="hero" class="section_hero" aria-labelledby="hero-heading">
-        <div class="padding-global">
-          <div class="container-large padding-section-large">
-            <div class="hero_layout">
-              <div class="hero_content">
-                <h1 id="hero-heading" class="heading-style-display hero_heading">
-                  Stable Care. Stronger Nurses. Healthier Communities.
-                </h1>
-                <p class="text-size-large text-color-muted hero_subtext">
-                  Single mom nurses show up every day for their patients, families, and communities. Triage4US helps provide reliable childcare, family support, and wellness resources so nurses can continue caring for others with greater stability and peace of mind.
-                </p>
-                <div class="hero_cta-wrap">
-                  <a class="button is-primary" href="#donation-impact">Donate Today</a>
-                  <a class="button is-secondary" href="#our-mission">Support a Nurse Family</a>
-                  <a class="button is-tertiary" href="#final-cta">Join the Mission</a>
-                </div>
-                <p class="text-size-small text-color-muted hero_trust">
-                  Powered by Triage360 in partnership with Care.com
-                </p>
-              </div>
-              <div class="hero_image-wrap">
-                <img
-                  class="hero_image"
-                  src="assets/images/hero.png"
-                  alt="Single mom nurse spending time with her child before work"
-                  width="1600"
-                  height="1200"
-                />
-              </div>
+        <div class="hero_card">
+          <img
+            class="hero_backdrop"
+            src="assets/images/hero.png"
+            alt="Single mom nurse spending time with her child before work"
+            width="1600"
+            height="1200"
+          />
+          <div class="hero_content">
+            <h1 id="hero-heading" class="heading-style-display hero_heading">
+              Stable Care.<br />
+              Stronger Nurses.<br />
+              Healthier Communities.
+            </h1>
+            <p class="text-size-large hero_subtext">
+              Single mom nurses show up every day for their patients, families, and communities. Triage4US helps provide reliable childcare, family support, and wellness resources so nurses can continue caring for others with greater stability and peace of mind.
+            </p>
+            <div class="hero_cta-wrap">
+              <a class="button is-primary" href="#donation-impact">Donate Today</a>
+              <a class="button is-on-dark" href="#our-mission">Support a Nurse Family</a>
             </div>
+            <p class="text-size-small hero_trust">
+              Powered by Triage360 in partnership with Care.com
+            </p>
           </div>
         </div>
       </section>
@@ -98,22 +93,69 @@
             </div>
 
             <ul class="reality_stats-grid" role="list">
-              <li class="stat_card">
-                <p class="stat_number">78%</p>
-                <p class="stat_label">of nurses are women</p>
+
+              <!-- Card 1: editorial metric -->
+              <li class="stat_card stat_card--metric">
+                <span class="stat_pill">Women in nursing</span>
+                <div class="stat_card_body">
+                  <p class="stat_number">78%</p>
+                  <p class="stat_label">of nurses are women</p>
+                </div>
+                <p class="stat_supporting">
+                  Nursing is one of the most female-dominated professions in the country.
+                </p>
               </li>
-              <li class="stat_card">
-                <p class="stat_number">40%</p>
-                <p class="stat_label">of nurses are mothers</p>
+
+              <!-- Card 2: dashboard widget -->
+              <li class="stat_card stat_card--widget">
+                <span class="stat_pill stat_pill--accent">Mothers</span>
+                <div class="stat_card_body">
+                  <p class="stat_number">40%</p>
+                  <p class="stat_label">of nurses are mothers</p>
+                </div>
+                <div class="widget_bar-wrap">
+                  <div class="widget_bar" aria-hidden="true">
+                    <div class="widget_bar_fill"></div>
+                  </div>
+                  <div class="widget_bar_axis" aria-hidden="true">
+                    <span>0%</span>
+                    <span>50%</span>
+                    <span>100%</span>
+                  </div>
+                </div>
               </li>
-              <li class="stat_card">
-                <p class="stat_number">12+ Hours</p>
-                <p class="stat_label">is a common shift length</p>
+
+              <!-- Card 3: abstract gradient -->
+              <li class="stat_card stat_card--gradient">
+                <span class="gradient_blob gradient_blob--1" aria-hidden="true"></span>
+                <span class="gradient_blob gradient_blob--2" aria-hidden="true"></span>
+                <span class="stat_pill stat_pill--on-dark">Daily reality</span>
+                <div class="stat_card_body">
+                  <p class="stat_number">12+ Hours</p>
+                  <p class="stat_label">is a common shift length</p>
+                </div>
               </li>
-              <li class="stat_card">
-                <p class="stat_number">1 in 4</p>
-                <p class="stat_label">nurses are raising children alone</p>
+
+              <!-- Card 4: photo lifestyle -->
+              <li class="stat_card stat_card--photo">
+                <img
+                  class="stat_photo"
+                  src="assets/images/reality-portrait.png"
+                  alt="A single mom nurse at home — a moment of quiet strength"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="1500"
+                />
+                <div class="stat_card_content">
+                  <span class="stat_pill stat_pill--on-dark">Sole caregiver</span>
+                  <div class="stat_card_body">
+                    <p class="stat_number">1 in 4</p>
+                    <p class="stat_label">nurses are raising children alone</p>
+                  </div>
+                </div>
               </li>
+
             </ul>
 
             <p class="reality_closing heading-style-h3 text-color-deep">
@@ -139,111 +181,111 @@
             <ul class="services_grid" role="list">
 
               <li class="services_card">
-                <div class="services_image-wrap">
-                  <img
-                    class="services_image"
-                    src="assets/images/service-1-childcare.png"
-                    alt="Childcare support for healthcare workers and nurses"
-                    loading="lazy"
-                    decoding="async"
-                    width="1200"
-                    height="800"
-                  />
+                <img
+                  class="services_image"
+                  src="assets/images/service-1-childcare.png"
+                  alt="Childcare support for healthcare workers and nurses"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="800"
+                />
+                <div class="services_content">
+                  <h3 class="heading-style-h3 services_heading">On-Demand Childcare</h3>
+                  <p class="services_copy">
+                    Reliable care for last-minute shifts, overnight schedules, and demanding healthcare environments.
+                  </p>
                 </div>
-                <h3 class="heading-style-h3 services_heading">On-Demand Childcare</h3>
-                <p class="text-color-muted services_copy">
-                  Reliable care for last-minute shifts, overnight schedules, and demanding healthcare environments.
-                </p>
               </li>
 
               <li class="services_card">
-                <div class="services_image-wrap">
-                  <img
-                    class="services_image"
-                    src="assets/images/service-2-tutoring.png"
-                    alt="Student receiving tutoring support through Triage4US"
-                    loading="lazy"
-                    decoding="async"
-                    width="1200"
-                    height="800"
-                  />
+                <img
+                  class="services_image"
+                  src="assets/images/service-2-tutoring.png"
+                  alt="Student receiving tutoring support through Triage4US"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="800"
+                />
+                <div class="services_content">
+                  <h3 class="heading-style-h3 services_heading">Homework &amp; Tutoring Support</h3>
+                  <p class="services_copy">
+                    Helping children stay supported, encouraged, and confident in school.
+                  </p>
                 </div>
-                <h3 class="heading-style-h3 services_heading">Homework &amp; Tutoring Support</h3>
-                <p class="text-color-muted services_copy">
-                  Helping children stay supported, encouraged, and confident in school.
-                </p>
               </li>
 
               <li class="services_card">
-                <div class="services_image-wrap">
-                  <img
-                    class="services_image"
-                    src="assets/images/service-3-meals.png"
-                    alt="Healthy meal support for nurse families"
-                    loading="lazy"
-                    decoding="async"
-                    width="1200"
-                    height="800"
-                  />
+                <img
+                  class="services_image"
+                  src="assets/images/service-3-meals.png"
+                  alt="Healthy meal support for nurse families"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="800"
+                />
+                <div class="services_content">
+                  <h3 class="heading-style-h3 services_heading">Meal &amp; Nutrition Assistance</h3>
+                  <p class="services_copy">
+                    Healthy meals and practical support that help families stay balanced during busy weeks.
+                  </p>
                 </div>
-                <h3 class="heading-style-h3 services_heading">Meal &amp; Nutrition Assistance</h3>
-                <p class="text-color-muted services_copy">
-                  Healthy meals and practical support that help families stay balanced during busy weeks.
-                </p>
               </li>
 
               <li class="services_card">
-                <div class="services_image-wrap">
-                  <img
-                    class="services_image"
-                    src="assets/images/service-4-wellness.png"
-                    alt="Nurse family wellness and emotional support resources"
-                    loading="lazy"
-                    decoding="async"
-                    width="1200"
-                    height="800"
-                  />
+                <img
+                  class="services_image"
+                  src="assets/images/service-4-wellness.png"
+                  alt="Nurse family wellness and emotional support resources"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="800"
+                />
+                <div class="services_content">
+                  <h3 class="heading-style-h3 services_heading">Wellness &amp; Mentorship</h3>
+                  <p class="services_copy">
+                    Resources and guidance that support emotional wellness for both moms and children.
+                  </p>
                 </div>
-                <h3 class="heading-style-h3 services_heading">Wellness &amp; Mentorship</h3>
-                <p class="text-color-muted services_copy">
-                  Resources and guidance that support emotional wellness for both moms and children.
-                </p>
               </li>
 
               <li class="services_card">
-                <div class="services_image-wrap">
-                  <img
-                    class="services_image"
-                    src="assets/images/service-5-activity.png"
-                    alt="Children participating in community activities and sports"
-                    loading="lazy"
-                    decoding="async"
-                    width="1200"
-                    height="800"
-                  />
+                <img
+                  class="services_image"
+                  src="assets/images/service-5-activity.png"
+                  alt="Children participating in community activities and sports"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="800"
+                />
+                <div class="services_content">
+                  <h3 class="heading-style-h3 services_heading">Sports &amp; Activity Support</h3>
+                  <p class="services_copy">
+                    Helping kids stay active, connected, and engaged outside the classroom.
+                  </p>
                 </div>
-                <h3 class="heading-style-h3 services_heading">Sports &amp; Activity Support</h3>
-                <p class="text-color-muted services_copy">
-                  Helping kids stay active, connected, and engaged outside the classroom.
-                </p>
               </li>
 
               <li class="services_card">
-                <div class="services_image-wrap">
-                  <img
-                    class="services_image"
-                    src="assets/images/service-6-future-readiness.png"
-                    alt="Mentorship and future readiness support for children"
-                    loading="lazy"
-                    decoding="async"
-                    width="1200"
-                    height="800"
-                  />
+                <img
+                  class="services_image"
+                  src="assets/images/service-6-future-readiness.png"
+                  alt="Mentorship and future readiness support for children"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="800"
+                />
+                <div class="services_content">
+                  <h3 class="heading-style-h3 services_heading">Future Readiness Programs</h3>
+                  <p class="services_copy">
+                    Encouraging long-term growth through mentorship, guidance, and opportunity.
+                  </p>
                 </div>
-                <h3 class="heading-style-h3 services_heading">Future Readiness Programs</h3>
-                <p class="text-color-muted services_copy">
-                  Encouraging long-term growth through mentorship, guidance, and opportunity.
-                </p>
               </li>
 
             </ul>
@@ -331,29 +373,30 @@
       <section id="final-cta" class="section_final-cta" aria-labelledby="final-cta-heading">
         <div class="padding-global">
           <div class="container-large padding-section-large">
-            <div class="final-cta_panel">
-              <img
-                class="final-cta_backdrop"
-                src="assets/images/final-cta.png"
-                alt=""
-                loading="lazy"
-                decoding="async"
-                width="2400"
-                height="1350"
-                aria-hidden="true"
-              />
-              <div class="final-cta_content">
-                <h2 id="final-cta-heading" class="heading-style-h2 text-color-on-dark">
-                  Together, we can cover what matters.
-                </h2>
-                <p class="text-size-large text-color-on-dark final-cta_copy">
-                  By supporting Triage4US, you are helping create more stability for the families behind healthcare and stronger communities for everyone.
-                </p>
-                <div class="final-cta_buttons">
-                  <a class="button is-primary" href="#donation-impact">Donate Today</a>
-                  <a class="button is-on-dark" href="#our-mission">Become a Partner</a>
-                </div>
-              </div>
+            <div class="final-cta_card">
+          <img
+            class="final-cta_backdrop"
+            src="assets/images/final-cta-2.png"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            width="1800"
+            height="1200"
+            aria-hidden="true"
+          />
+          <div class="final-cta_content">
+            <span class="final-cta_pill">Join the movement</span>
+            <h2 id="final-cta-heading" class="heading-style-display final-cta_heading">
+              Together, we can cover what matters.
+            </h2>
+            <p class="text-size-large final-cta_copy">
+              By supporting Triage4US, you are helping create more stability for the families behind healthcare and stronger communities for everyone.
+            </p>
+            <div class="final-cta_cta-wrap">
+              <a class="button is-primary" href="#donation-impact">Donate Today</a>
+              <a class="button is-on-dark" href="#our-mission">Become a Partner</a>
+            </div>
+          </div>
             </div>
           </div>
         </div>

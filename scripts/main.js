@@ -12,6 +12,33 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
+  /* ----- Header transparent-over-hero state -----
+     Default state on page load (set inline in HTML) is transparent. As soon
+     as the user starts scrolling, the header flips to its frosted-white
+     state. Switching back happens at the same low threshold. */
+  var header = document.querySelector(".site-header");
+  var SCROLL_THRESHOLD = 40;
+
+  if (header) {
+    var ticking = false;
+    function syncHeaderState() {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        header.classList.remove("is-over-hero");
+      } else {
+        header.classList.add("is-over-hero");
+      }
+      ticking = false;
+    }
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(syncHeaderState);
+        ticking = true;
+      }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    syncHeaderState();
+  }
+
   /* ----- FAQ accordion ----- */
   var triggers = document.querySelectorAll(".faq_trigger");
 
