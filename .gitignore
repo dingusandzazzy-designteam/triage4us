@@ -5,6 +5,11 @@ plan/
 prompts/
 feedbacks/
 
+# Claude Code tooling — local only, not part of the site
+.claude/
+CLAUDE.md
+memory/
+
 # OS / editor
 .DS_Store
 Thumbs.db
