@@ -9,6 +9,8 @@ feedbacks/
 .claude/
 CLAUDE.md
 memory/
+PRODUCT.md
+DESIGN.md
 
 # OS / editor
 .DS_Store

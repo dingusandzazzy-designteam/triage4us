@@ -39,6 +39,36 @@
     syncHeaderState();
   }
 
+  /* ----- Mobile nav toggle -----
+     Hamburger reveals a fixed drawer below the header on <768px. Closes
+     on link click and on Escape. */
+  var menuToggle = document.querySelector(".site-header_menu-toggle");
+  var mobileNav = document.getElementById("mobile-nav");
+
+  if (menuToggle && mobileNav) {
+    function setMobileNavOpen(open) {
+      menuToggle.setAttribute("aria-expanded", String(open));
+      mobileNav.setAttribute("data-open", String(open));
+      menuToggle.setAttribute(
+        "aria-label",
+        open ? "Close navigation menu" : "Open navigation menu"
+      );
+    }
+    menuToggle.addEventListener("click", function () {
+      var open = menuToggle.getAttribute("aria-expanded") === "true";
+      setMobileNavOpen(!open);
+    });
+    mobileNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () { setMobileNavOpen(false); });
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+        setMobileNavOpen(false);
+        menuToggle.focus();
+      }
+    });
+  }
+
   /* ----- FAQ accordion ----- */
   var triggers = document.querySelectorAll(".faq_trigger");
 

@@ -42,7 +42,7 @@
   --radius-section: 40px;
 
   /* ---------- Typography ---------- */
-  --font-primary: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-primary: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --fs-display: clamp(2.5rem, 5vw + 1rem, 4.5rem);   /* H1 hero */
   --fs-h1: clamp(2.25rem, 4vw + 0.5rem, 3.5rem);
