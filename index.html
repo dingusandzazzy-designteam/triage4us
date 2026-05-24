@@ -443,7 +443,6 @@
                   id="faq-panel-1"
                   role="region"
                   aria-labelledby="faq-trigger-1"
-                  hidden
                 >
                   <p class="faq_answer">
                     Triage4US is a nonprofit initiative focused on helping single mom nurses access childcare, family support, wellness resources, and educational assistance.
@@ -467,7 +466,6 @@
                   id="faq-panel-2"
                   role="region"
                   aria-labelledby="faq-trigger-2"
-                  hidden
                 >
                   <p class="faq_answer">
                     Triage4US supports single mother nurses and their families, especially those balancing demanding healthcare schedules with parenting responsibilities.
@@ -491,7 +489,6 @@
                   id="faq-panel-3"
                   role="region"
                   aria-labelledby="faq-trigger-3"
-                  hidden
                 >
                   <p class="faq_answer">
                     Donations help fund childcare assistance, tutoring, wellness resources, meal support, and family stability programs for nurses and their children.
@@ -515,7 +512,6 @@
                   id="faq-panel-4"
                   role="region"
                   aria-labelledby="faq-trigger-4"
-                  hidden
                 >
                   <p class="faq_answer">
                     Yes. Businesses, healthcare organizations, and community partners can help expand support programs for nurse families.
@@ -548,6 +544,17 @@
     </footer>
 
   </div>
+
+  <!-- Floating donate CTA — appears after the hero scrolls out of view -->
+  <a class="floating-donate" href="#donation-impact" aria-label="Donate to Triage4US" data-visible="false">
+    <span class="floating-donate__halo" aria-hidden="true"></span>
+    <span class="floating-donate__icon" aria-hidden="true">
+      <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14" role="img">
+        <path d="M9.653 16.915l-.005-.003-.019-.01a20.759 20.759 0 01-1.162-.682 22.045 22.045 0 01-2.582-1.9C4.045 12.733 2 10.352 2 7.5a4.5 4.5 0 018-2.828A4.5 4.5 0 0118 7.5c0 2.852-2.044 5.233-3.885 6.82a22.049 22.049 0 01-3.744 2.582l-.019.01-.005.003h-.002a.739.739 0 01-.69.001l-.002-.001z"/>
+      </svg>
+    </span>
+    <span class="floating-donate__label">Donate</span>
+  </a>
 
   <script src="scripts/main.js" defer></script>
 </body>

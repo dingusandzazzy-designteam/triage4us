@@ -39,6 +39,45 @@
     syncHeaderState();
   }
 
+  /* ----- Floating donate CTA visibility -----
+     Reveal the sticky donate button once the hero scrolls out of view.
+     Uses IntersectionObserver against the hero section so the timing
+     is anchored to actual layout, not a magic scroll threshold. */
+  var floatingDonate = document.querySelector(".floating-donate");
+  var heroSection = document.getElementById("hero");
+
+  if (floatingDonate && heroSection && "IntersectionObserver" in window) {
+    var donateObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        floatingDonate.setAttribute(
+          "data-visible",
+          String(!entry.isIntersecting)
+        );
+      });
+    }, { rootMargin: "0px 0px -15% 0px", threshold: 0 });
+    donateObserver.observe(heroSection);
+  } else if (floatingDonate) {
+    // No IntersectionObserver support — just show it always.
+    floatingDonate.setAttribute("data-visible", "true");
+  }
+
+  /* ----- Below-fold image fade-in -----
+     Mark each lazy image as loaded once it decodes. CSS handles the
+     320ms opacity transition; reduced-motion users skip the dance. */
+  document.querySelectorAll('img[loading="lazy"]').forEach(function (img) {
+    if (img.complete && img.naturalHeight !== 0) {
+      img.classList.add("is-loaded");
+    } else {
+      img.addEventListener("load", function () {
+        img.classList.add("is-loaded");
+      }, { once: true });
+      img.addEventListener("error", function () {
+        // Don't leave a permanently invisible image if it fails to load.
+        img.classList.add("is-loaded");
+      }, { once: true });
+    }
+  });
+
   /* ----- Mobile nav toggle -----
      Hamburger reveals a fixed drawer below the header on <768px. Closes
      on link click and on Escape. */
@@ -76,14 +115,14 @@
     var panelId = trigger.getAttribute("aria-controls");
     var panel = document.getElementById(panelId);
     trigger.setAttribute("aria-expanded", "false");
-    if (panel) panel.hidden = true;
+    if (panel) panel.classList.remove("is-open");
   }
 
   function openPanel(trigger) {
     var panelId = trigger.getAttribute("aria-controls");
     var panel = document.getElementById(panelId);
     trigger.setAttribute("aria-expanded", "true");
-    if (panel) panel.hidden = false;
+    if (panel) panel.classList.add("is-open");
   }
 
   triggers.forEach(function (trigger) {
