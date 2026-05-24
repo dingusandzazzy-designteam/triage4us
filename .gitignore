@@ -5,8 +5,11 @@ plan/
 prompts/
 feedbacks/
 
-# Claude Code tooling — local only, not part of the site
-.claude/
+# Claude Code tooling — selective
+# Skills are tracked (project tooling worth shipping with the repo).
+# Personal config and AI-context docs stay local only.
+.claude/*
+!.claude/skills/
 CLAUDE.md
 memory/
 PRODUCT.md
