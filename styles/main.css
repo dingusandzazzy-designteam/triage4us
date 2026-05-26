@@ -175,7 +175,7 @@
 .section_hero {
   --hero-card-inset: var(--space-5);
   --header-offset: 4.5rem;
-  height: 100svh;
+  min-height: 100svh;
   padding:
     calc(var(--header-offset) + var(--hero-card-inset))
     var(--hero-card-inset)
