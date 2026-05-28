@@ -358,28 +358,62 @@
               </p>
             </div>
 
-            <ul class="donation_grid" role="list">
-              <li class="donation_card">
-                <p class="donation_amount">$25</p>
-                <p class="donation_copy">Helps provide after-school enrichment support</p>
-              </li>
-              <li class="donation_card">
-                <p class="donation_amount">$75</p>
-                <p class="donation_copy">Supports emergency childcare coverage</p>
-              </li>
-              <li class="donation_card">
-                <p class="donation_amount">$150</p>
-                <p class="donation_copy">Helps fund tutoring and wellness resources</p>
-              </li>
-              <li class="donation_card">
-                <p class="donation_amount">$300</p>
-                <p class="donation_copy">Supports a family assistance package</p>
-              </li>
-            </ul>
+            <form class="donation_selector" id="donation-form" novalidate>
+              <div class="donation_custom">
+                <span class="donation_eyebrow">Other amount</span>
+                <label class="donation_input-wrap" for="donation-custom-input">
+                  <span class="donation_input-prefix" aria-hidden="true">$</span>
+                  <input
+                    id="donation-custom-input"
+                    class="donation_input"
+                    type="number"
+                    inputmode="numeric"
+                    min="1"
+                    max="10000"
+                    step="1"
+                    placeholder="Enter amount"
+                    autocomplete="off"
+                    aria-label="Custom donation amount in US dollars"
+                  />
+                </label>
+                <p class="donation_partners">
+                  Healthcare partners contributing $1,000+? <a href="#our-mission">Get in touch</a>.
+                </p>
+              </div>
 
-            <div class="donation_cta-wrap">
-              <a class="button is-primary" href="#final-cta">Donate Today</a>
-            </div>
+              <div class="donation_choices">
+                <div class="donation_frequency" role="radiogroup" aria-label="Donation frequency">
+                  <button type="button" class="donation_freq-option" role="radio" aria-checked="false" data-frequency="once">One-time</button>
+                  <button type="button" class="donation_freq-option is-selected" role="radio" aria-checked="true" data-frequency="monthly">Monthly</button>
+                </div>
+
+                <div class="donation_presets" role="radiogroup" aria-label="Donation amount">
+                  <button type="button" class="donation_preset" role="radio" aria-checked="false" data-amount="25">
+                    <span class="donation_preset-amount">$25</span>
+                    <span class="donation_preset-copy">After-school enrichment</span>
+                  </button>
+                  <button type="button" class="donation_preset" role="radio" aria-checked="false" data-amount="75">
+                    <span class="donation_preset-pill">Most chosen</span>
+                    <span class="donation_preset-amount">$75</span>
+                    <span class="donation_preset-copy">Emergency childcare coverage</span>
+                  </button>
+                  <button type="button" class="donation_preset" role="radio" aria-checked="false" data-amount="150">
+                    <span class="donation_preset-amount">$150</span>
+                    <span class="donation_preset-copy">Tutoring + wellness</span>
+                  </button>
+                  <button type="button" class="donation_preset" role="radio" aria-checked="false" data-amount="300">
+                    <span class="donation_preset-amount">$300</span>
+                    <span class="donation_preset-copy">Family assistance package</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="donation_cta-wrap">
+                <button type="submit" class="button is-primary donation_cta" id="donation-cta" disabled>
+                  <span class="donation_cta-label">Choose an amount</span>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </section>

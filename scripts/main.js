@@ -142,6 +142,91 @@
     });
   });
 
+  /* ----- Donation selector -----
+     Presets, custom amount, frequency toggle, reactive CTA copy. Custom
+     and presets are mutually exclusive: picking one clears the other.
+     Submit is a placeholder until payment integration ships — for now it
+     scrolls to the final CTA so the page still flows. */
+  var donationForm = document.getElementById("donation-form");
+  if (donationForm) {
+    var donationPresets = donationForm.querySelectorAll(".donation_preset");
+    var donationFreqOptions = donationForm.querySelectorAll(".donation_freq-option");
+    var donationCustomInput = document.getElementById("donation-custom-input");
+    var donationCta = document.getElementById("donation-cta");
+    var donationCtaLabel = donationCta.querySelector(".donation_cta-label");
+
+    var donationState = { amount: null, frequency: "monthly" };
+
+    function updateDonationCta() {
+      if (!donationState.amount || donationState.amount < 1) {
+        donationCta.disabled = true;
+        donationCtaLabel.textContent = "Choose an amount";
+        return;
+      }
+      donationCta.disabled = false;
+      var word = donationState.frequency === "monthly" ? "monthly" : "once";
+      donationCtaLabel.textContent =
+        "Donate $" + donationState.amount + " " + word;
+    }
+
+    function clearPresetSelection() {
+      donationPresets.forEach(function (btn) {
+        btn.classList.remove("is-selected");
+        btn.setAttribute("aria-checked", "false");
+      });
+    }
+
+    donationPresets.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var amount = Number(btn.getAttribute("data-amount"));
+        donationState.amount = amount;
+        clearPresetSelection();
+        btn.classList.add("is-selected");
+        btn.setAttribute("aria-checked", "true");
+        if (donationCustomInput.value !== "") donationCustomInput.value = "";
+        updateDonationCta();
+      });
+    });
+
+    donationFreqOptions.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var freq = btn.getAttribute("data-frequency");
+        donationState.frequency = freq;
+        donationFreqOptions.forEach(function (other) {
+          var match = other === btn;
+          other.classList.toggle("is-selected", match);
+          other.setAttribute("aria-checked", String(match));
+        });
+        updateDonationCta();
+      });
+    });
+
+    if (donationCustomInput) {
+      donationCustomInput.addEventListener("input", function () {
+        var n = parseInt(donationCustomInput.value, 10);
+        donationState.amount = Number.isFinite(n) && n >= 1 ? n : null;
+        clearPresetSelection();
+        updateDonationCta();
+      });
+    }
+
+    donationForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (donationCta.disabled) return;
+      var target = document.getElementById("final-cta");
+      if (!target) return;
+      var reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      target.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "start"
+      });
+    });
+
+    updateDonationCta();
+  }
+
   /* ----- Smooth scroll for in-page anchors ----- */
   var prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
