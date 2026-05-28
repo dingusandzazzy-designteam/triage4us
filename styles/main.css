@@ -852,7 +852,7 @@
   padding: var(--space-6);
 }
 
-.donation_custom {
+.donation_support {
   grid-area: custom;
   display: flex;
   flex-direction: column;
@@ -867,52 +867,32 @@
   color: var(--color-text-muted);
 }
 
-.donation_input-wrap {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
-  border-bottom: 2px solid var(--color-deep-green);
-  padding-bottom: var(--space-2);
-  cursor: text;
-  transition: border-color var(--duration-base) var(--ease-out-soft);
-}
-
-.donation_input-wrap:focus-within {
-  border-bottom-color: var(--color-bright-green);
-}
-
-.donation_input-prefix {
-  font-size: clamp(2rem, 2vw + 1rem, 2.75rem);
-  font-weight: var(--fw-bold);
-  color: var(--color-deep-green);
-  line-height: 1;
-}
-
-.donation_input {
-  flex: 1;
-  min-width: 0;
-  border: 0;
-  background: transparent;
-  font: inherit;
-  font-size: clamp(2rem, 2vw + 1rem, 2.75rem);
-  font-weight: var(--fw-bold);
-  color: var(--color-text-deep);
-  line-height: 1;
+.donation_support-list {
+  list-style: none;
   padding: 0;
-  outline: none;
-  -moz-appearance: textfield;
-}
-
-.donation_input::-webkit-outer-spin-button,
-.donation_input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
 }
 
-.donation_input::placeholder {
-  color: var(--color-text-muted);
-  font-weight: var(--fw-medium);
-  font-size: var(--fs-body-large);
+.donation_support-list li {
+  position: relative;
+  padding-left: var(--space-5);
+  font-size: var(--fs-body);
+  line-height: var(--lh-snug);
+  color: var(--color-text-deep);
+}
+
+.donation_support-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-deep-green);
 }
 
 .donation_partners {
@@ -1057,6 +1037,71 @@
   border-radius: var(--radius-button);
 }
 
+.donation_custom-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  cursor: text;
+}
+
+.donation_custom-label {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.donation_custom-field {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  border-bottom: 2px solid var(--color-deep-green);
+  padding-bottom: var(--space-2);
+  transition: border-color var(--duration-base) var(--ease-out-soft);
+}
+
+.donation_custom-field:focus-within {
+  border-bottom-color: var(--color-bright-green);
+}
+
+.donation_custom-prefix {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  color: var(--color-deep-green);
+  line-height: 1;
+}
+
+.donation_custom-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-deep);
+  line-height: 1;
+  padding: 0;
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.donation_custom-input::-webkit-outer-spin-button,
+.donation_custom-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.donation_custom-input::placeholder {
+  color: var(--color-text-muted);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-body);
+}
+
 .donation_cta-wrap {
   grid-area: cta;
 }
@@ -1090,7 +1135,7 @@
     padding: var(--space-8);
   }
 
-  .donation_custom {
+  .donation_support {
     padding-right: var(--space-7);
     border-right: 1px solid var(--color-border-soft);
   }

@@ -359,23 +359,14 @@
             </div>
 
             <form class="donation_selector" id="donation-form" novalidate>
-              <div class="donation_custom">
-                <span class="donation_eyebrow">Other amount</span>
-                <label class="donation_input-wrap" for="donation-custom-input">
-                  <span class="donation_input-prefix" aria-hidden="true">$</span>
-                  <input
-                    id="donation-custom-input"
-                    class="donation_input"
-                    type="number"
-                    inputmode="numeric"
-                    min="1"
-                    max="10000"
-                    step="1"
-                    placeholder="Enter amount"
-                    autocomplete="off"
-                    aria-label="Custom donation amount in US dollars"
-                  />
-                </label>
+              <div class="donation_support">
+                <span class="donation_eyebrow">Your donation supports</span>
+                <ul class="donation_support-list" role="list">
+                  <li>After-school enrichment and tutoring</li>
+                  <li>Emergency childcare coverage</li>
+                  <li>Wellness resources for caregivers</li>
+                  <li>Family assistance packages</li>
+                </ul>
                 <p class="donation_partners">
                   Healthcare partners contributing $1,000+? <a href="#our-mission">Get in touch</a>.
                 </p>
@@ -390,22 +381,37 @@
                 <div class="donation_presets" role="radiogroup" aria-label="Donation amount">
                   <button type="button" class="donation_preset" role="radio" aria-checked="false" data-amount="25">
                     <span class="donation_preset-amount">$25</span>
-                    <span class="donation_preset-copy">After-school enrichment</span>
                   </button>
                   <button type="button" class="donation_preset" role="radio" aria-checked="false" data-amount="75">
                     <span class="donation_preset-pill">Most chosen</span>
                     <span class="donation_preset-amount">$75</span>
-                    <span class="donation_preset-copy">Emergency childcare coverage</span>
                   </button>
                   <button type="button" class="donation_preset" role="radio" aria-checked="false" data-amount="150">
                     <span class="donation_preset-amount">$150</span>
-                    <span class="donation_preset-copy">Tutoring + wellness</span>
                   </button>
                   <button type="button" class="donation_preset" role="radio" aria-checked="false" data-amount="300">
                     <span class="donation_preset-amount">$300</span>
-                    <span class="donation_preset-copy">Family assistance package</span>
                   </button>
                 </div>
+
+                <label class="donation_custom-row" for="donation-custom-input">
+                  <span class="donation_custom-label">Other amount</span>
+                  <span class="donation_custom-field">
+                    <span class="donation_custom-prefix" aria-hidden="true">$</span>
+                    <input
+                      id="donation-custom-input"
+                      class="donation_custom-input"
+                      type="number"
+                      inputmode="numeric"
+                      min="1"
+                      max="10000"
+                      step="1"
+                      placeholder="Enter amount"
+                      autocomplete="off"
+                      aria-label="Custom donation amount in US dollars"
+                    />
+                  </span>
+                </label>
               </div>
 
               <div class="donation_cta-wrap">
